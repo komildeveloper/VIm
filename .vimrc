@@ -3,27 +3,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-call plug#end()
-call plug#begin('~/.vim/plugged')
-
-Plug 'preservim/nerdtree'
-Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
-Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -36,8 +24,17 @@ set encoding=UTF-8
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set t_Co=256
 
-colorscheme gruvbox
+colorscheme gruvbox-material
+" Important!!
+        if has('termguicolors')
+          set termguicolors
+        endif
+        " Set contrast.
+        " This configuration option should be placed before `colorscheme gruvbox-material`.
+        " Available values: 'hard', 'medium'(default), 'soft'
+        let g:gruvbox_material_background = 'hard'
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.git$', '\.idea$', '\.vscode$', '\.history$']
@@ -85,7 +82,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+"set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

@@ -7,7 +7,11 @@
     "json",
     "javascriptreact",
     "typescript.tsx",
-    "graphql"
+    "graphql",
+    "css",
+    "html",
+    "markdown",
+    "scss"
   ],
 
   "prettier.trailingComma": "none",
