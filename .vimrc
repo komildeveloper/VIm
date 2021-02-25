@@ -3,15 +3,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sainnhe/gruvbox-material'
+Plug 'joshdick/onedark.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -25,19 +23,17 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set t_Co=256
+set termguicolors
+set wrap
+set linebreak
 
-colorscheme gruvbox-material
-" Important!!
-        if has('termguicolors')
-          set termguicolors
-        endif
-        " Set contrast.
-        " This configuration option should be placed before `colorscheme gruvbox-material`.
-        " Available values: 'hard', 'medium'(default), 'soft'
-        let g:gruvbox_material_background = 'hard'
+colorscheme onedark
+let g:onedark_termcolors=256
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.git$', '\.idea$', '\.vscode$', '\.history$']
+
+nmap <space>e :CocCommand explorer<CR>
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -73,6 +69,51 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
+
+" Better nav for omnicomplete
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
+" Use alt + hjkl to resize windows
+nnoremap <M-j>    :resize -2<CR>
+nnoremap <M-k>    :resize +2<CR>
+nnoremap <M-h>    :vertical resize -2<CR>
+nnoremap <M-l>    :vertical resize +2<CR>
+
+" I hate escape more than anything else
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+" Easy CAPS
+inoremap <c-u> <ESC>viwUi
+nnoremap <c-u> viwU<Esc>
+
+" TAB in general mode will move to text buffer
+nnoremap <TAB> :bnext<CR>
+" SHIFT-TAB will go back
+nnoremap <S-TAB> :bprevious<CR>
+
+" Alternate way to save
+nnoremap <C-s> :w<CR>
+" Alternate way to quit
+nnoremap <C-Q> :wq!<CR>
+" Use control-c instead of escape
+nnoremap <C-c> <Esc>
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" Better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <Leader>o o<Esc>^Da
+nnoremap <Leader>O O<Esc>^Da
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -222,7 +263,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>l  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
