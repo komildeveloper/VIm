@@ -1,4 +1,7 @@
 {
+  "suggest.autoTrigger": "none",
+  "suggest.timeout": 1,
+  "diagnostic.enable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
@@ -13,7 +16,6 @@
     "scss"
   ],
 
-  // Emmet
   "emmet.includeLanguages": {
     "plaintext": "html",
     "html": "html",
@@ -25,19 +27,17 @@
     "typescriptreact": "typescriptreact"
   },
 
-  // HTML
   "html.autoClosingTags": true,
   "html-css-support.enabledLanguages": [
-        "html",
-        "vue",
-        "blade",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
+    "html",
+    "vue",
+    "blade",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
   ],
 
-  // Prettier
   "prettier.trailingComma": "none",
   "prettier.tabWidth": 2,
   "prettier.semi": true,
@@ -45,7 +45,6 @@
   "prettier.arrowParens": "avoid",
   "prettier.jsxSingleQuote": true,
 
-  // explorer
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
@@ -55,12 +54,9 @@
     "v": "open:vsplit"
   },
   "explorer.file.hiddenRules": {
-    "patternMatches": [
-      "^\\.git$"
-    ]
+    "patternMatches": ["^\\.git$"]
   },
 
-  // TailwindCSS
   "tailwindCSS.enable": true,
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.includeLanguages": {
